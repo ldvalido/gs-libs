@@ -6,7 +6,6 @@ function exportSheetAsXlsx(sheet_name, email_subject) {
   let params = { method: "GET", headers: { "authorization": "Bearer " + ScriptApp.getOAuthToken() } };
   let response = UrlFetchApp.fetch(url, params).getBlob().setName(sheet_name);
   let email = Session.getActiveUser().getEmail();
-  //let subject = 'LV FCI - Daily summary'
   MailApp.sendEmail(email, email_subject, '', {
     attachments: {
       fileName: `${sheet_name}.xlsx`,
